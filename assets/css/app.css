@@ -978,12 +978,22 @@ input:checked + .filter-list-item-box {
 .reviews {
   position: relative;
   min-height: 100vh;
+  height: 100vh;
   width: 640px;
   max-width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   background: #f7f7f7;
   padding: 40px 10px 0px 23px;
-  overflow: auto;
+  overflow: hidden;
   margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .reviews.is-hidden {
@@ -991,13 +1001,34 @@ input:checked + .filter-list-item-box {
 }
 
 .reviews-title {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 105%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #00205C;
+  color: #2b2a29;
   margin-bottom: 4px;
+}
+
+.reviews__wrapper {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #d8d8d8 transparent;
+  scrollbar-width: thin;
+}
+
+.reviews__wrapper::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+.reviews__wrapper::-webkit-scrollbar-thumb {
+  background-color: #d8d8d8;
+  border-radius: 999px;
 }
 
 .reviews__rating {
@@ -1022,9 +1053,9 @@ input:checked + .filter-list-item-box {
 .reviews__rating-info-item-val {
   font-weight: 500;
   font-size: 36px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #00205C;
+  color: #2b2a29;
 }
 
 .reviews__rating-info-item-stars {
@@ -1047,8 +1078,8 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
-  color: #00205C;
+  letter-spacing: -0.03em;
+  color: #2b2a29;
 }
 
 .reviews__foto-reviews {
@@ -1066,9 +1097,9 @@ input:checked + .filter-list-item-box {
 .reviews__foto-reviews-title {
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #00205C;
+  color: #2b2a29;
 }
 
 .reviews__foto-reviews-photos {
@@ -1091,7 +1122,7 @@ input:checked + .filter-list-item-box {
 .reviews__foto-reviews-more-btn {
   font-weight: 400;
   font-size: 14px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   text-decoration: underline;
   -webkit-text-decoration-skip-ink: none;
@@ -1147,7 +1178,7 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   color: #66799D;
 }
 
@@ -1167,8 +1198,12 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   color: #66799D;
+}
+
+.reviews__block-reviews-item-product span {
+  font-size: 12px;
 }
 
 .reviews__block-reviews-item-text {
@@ -1176,8 +1211,8 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
-  color: #00205C;
+  letter-spacing: -0.03em;
+  color: #555554;
 }
 
 .reviews__block-reviews-item-name {
@@ -1185,7 +1220,7 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   color: #66799D;
 }
 
@@ -1221,12 +1256,18 @@ input:checked + .filter-list-item-box {
   background: #f7f7f7;
   padding: 40px 10px 40px 23px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   margin-left: auto;
 }
 
 .reviews-detail.is-active {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .reviews-detail .back {
@@ -1234,12 +1275,12 @@ input:checked + .filter-list-item-box {
 }
 
 .reviews-detail-title {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 105%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #00205C;
+  color: #2b2a29;
   margin-bottom: 4px;
 }
 
@@ -1247,9 +1288,37 @@ input:checked + .filter-list-item-box {
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.03em;
   color: #66799D;
   margin-left: 30px;
+}
+
+.reviews-detail .reviews-detail__body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #d8d8d8 transparent;
+  scrollbar-width: thin;
+}
+
+.reviews-detail .reviews-detail__body::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+.reviews-detail .reviews-detail__body::-webkit-scrollbar-thumb {
+  background-color: #d8d8d8;
+  border-radius: 999px;
 }
 
 .reviews-detail__head {
@@ -1265,7 +1334,7 @@ input:checked + .filter-list-item-box {
 .reviews-detail__gallery {
   display: none;
   margin-top: 24px;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 140px;
 }
 
@@ -1324,7 +1393,7 @@ input:checked + .filter-list-item-box {
   -ms-flex-pack: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 5px;
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
@@ -1343,7 +1412,7 @@ input:checked + .filter-list-item-box {
 }
 
 .reviews-detail__gallery-nav button svg {
-  stroke: #00205C;
+  stroke: #2b2a29;
 }
 
 .reviews-detail__gallery-nav .swiper-button-disabled svg {
@@ -7312,12 +7381,12 @@ input[name="CodeRegForm[code]"] {
 }
 
 .reviews-form__product-title {
-  color: #00205C;
-  letter-spacing: -0.07em;
+  color: #2b2a29;
+  letter-spacing: -0.03em;
 }
 
 .reviews-form__product-title h3 {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 105%;
   text-transform: uppercase;
@@ -7327,6 +7396,7 @@ input[name="CodeRegForm[code]"] {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
+  color: #555554;
 }
 
 .reviews-form__product-card {
@@ -7359,21 +7429,25 @@ input[name="CodeRegForm[code]"] {
 }
 
 .reviews-form__product-card-desc {
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   line-height: 120%;
 }
 
 .reviews-form__product-card-desc h6 {
   font-weight: 500;
   font-size: 16px;
-  color: #00205C;
+  color: #2b2a29;
   margin-bottom: 4px;
 }
 
 .reviews-form__product-card-desc p {
   font-weight: 400;
   font-size: 16px;
-  color: #66799D;
+  color: #555554;
+}
+
+.reviews-form__product-card-desc span {
+  font-size: 12px;
 }
 
 .reviews-form .form-reviews {
@@ -7404,9 +7478,9 @@ input[name="CodeRegForm[code]"] {
 .reviews-form__message h6 {
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #00205C;
+  color: #2b2a29;
 }
 
 .reviews-form__stars {
@@ -7445,7 +7519,7 @@ input[name="CodeRegForm[code]"] {
 .reviews-form__message textarea {
   border-radius: 4px;
   padding: 10px 12px;
-  color: #00205C;
+  color: #2b2a29;
   border: none;
   outline: none;
   background: #E6E9EF;
@@ -7454,7 +7528,7 @@ input[name="CodeRegForm[code]"] {
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
 }
 
 .reviews-form__message textarea::-webkit-input-placeholder {
@@ -7500,7 +7574,7 @@ input[name="CodeRegForm[code]"] {
   border: 1px solid #5D88DB;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   padding: 13px;
   color: #5D88DB;
@@ -7538,7 +7612,7 @@ input[name="CodeRegForm[code]"] {
   border: 1px solid #5D88DB;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   padding: 13px;
   background: #5D88DB;
@@ -7555,6 +7629,72 @@ input[name="CodeRegForm[code]"] {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.reviews-form__sent-review-link {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  padding: 0;
+  color: #5D88DB;
+  text-align: center;
+}
+
+.reviews-form__sent-review-link:hover {
+  color: #2b2a29;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.reviews-form__cards-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.reviews-form__cards-slider .swiper-wrapper {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.reviews-form__card {
+  width: auto;
+  height: auto;
+}
+
+.reviews-form__card-img-block {
+  width: 100%;
+  aspect-ratio: 197/234;
+  overflow: hidden;
+}
+
+.reviews-form__card-img-block img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.reviews-form__card-title {
+  margin-top: 8px;
+}
+
+.reviews-form__card-title h3 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #2b2a29;
+}
+
+.reviews-form__card-title p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #555554;
 }
 
 .footer {
@@ -9843,15 +9983,10 @@ input[name="CodeRegForm[code]"] {
     -o-transition: height 0.3s, transform 0.3s;
     transition: height 0.3s, transform 0.3s;
     transition: height 0.3s, transform 0.3s, -webkit-transform 0.3s;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 24px 20px 20px 20px;
-  }
-
-  #reviews .reviews::-webkit-scrollbar {
-    display: none;
   }
 
   #reviews .reviews.is-scrolled {
@@ -9866,6 +10001,15 @@ input[name="CodeRegForm[code]"] {
   #reviews .reviews-title {
     font-size: 20px;
     font-weight: 500;
+  }
+
+  #reviews .reviews__wrapper {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #reviews .reviews__wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   #reviews .reviews__rating {
@@ -9934,7 +10078,7 @@ input[name="CodeRegForm[code]"] {
     transition: height 0.3s, transform 0.3s;
     transition: height 0.3s, transform 0.3s, -webkit-transform 0.3s;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 24px 20px 20px 20px;
@@ -9960,12 +10104,28 @@ input[name="CodeRegForm[code]"] {
     order: 0;
   }
 
+  #reviews .reviews-detail .reviews-detail__body {
+    display: contents;
+  }
+
   #reviews .reviews-detail__info {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 0;
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1;
     display: block;
     margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #reviews .reviews-detail__info::-webkit-scrollbar {
+    display: none;
   }
 
   #reviews .reviews-detail__info-thumbs {
@@ -10188,6 +10348,10 @@ input[name="CodeRegForm[code]"] {
 
   .reviews-form-container {
     width: 100%;
+  }
+
+  .reviews-form {
+    margin-bottom: 0;
   }
 
   .reviews-form__product-title h3 {

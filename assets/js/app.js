@@ -610,9 +610,21 @@ if (reviewStars) {
 
 var reviewsFormBlock = document.querySelector('#reviews-form');
 var reviewsForm = reviewsFormBlock === null || reviewsFormBlock === void 0 ? void 0 : reviewsFormBlock.querySelector('form');
+var reviewsFormStep2 = document.querySelector('#reviews-form-step-2');
 var successReview = document.querySelector('#success-review');
 
-if (reviewsForm && successReview) {
+var scrollToReviewBlock = function scrollToReviewBlock(block) {
+  requestAnimationFrame(function () {
+    var headerOffset = 80;
+    var blockTop = block.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({
+      top: Math.max(0, blockTop),
+      behavior: 'smooth'
+    });
+  });
+};
+
+if (reviewsForm && reviewsFormStep2) {
   reviewsForm.addEventListener('submit', function (event) {
     event.preventDefault();
     var ratingInput = reviewsForm.querySelector('input[name="rating"]');
@@ -635,7 +647,74 @@ if (reviewsForm && successReview) {
     }
 
     reviewsFormBlock.hidden = true;
-    successReview.hidden = false;
+    reviewsFormStep2.hidden = false;
+    requestAnimationFrame(function () {
+      var _reviewsFormStep2$que, _reviewsFormStep2$que2;
+
+      (_reviewsFormStep2$que = reviewsFormStep2.querySelector('.reviews-form__cards-slider')) === null || _reviewsFormStep2$que === void 0 ? void 0 : (_reviewsFormStep2$que2 = _reviewsFormStep2$que.swiper) === null || _reviewsFormStep2$que2 === void 0 ? void 0 : _reviewsFormStep2$que2.update();
+    });
+    scrollToReviewBlock(reviewsFormStep2);
+  });
+}
+
+if (reviewsFormStep2 && reviewsFormBlock) {
+  var nextModelButton = reviewsFormStep2.querySelector('.reviews-form__sent-review-btn');
+  var continueShoppingButton = reviewsFormStep2.querySelector('.reviews-form__sent-review-link');
+  nextModelButton === null || nextModelButton === void 0 ? void 0 : nextModelButton.addEventListener('click', function () {
+    reviewsForm === null || reviewsForm === void 0 ? void 0 : reviewsForm.reset();
+    var starsBlock = reviewsForm === null || reviewsForm === void 0 ? void 0 : reviewsForm.querySelector('.reviews-form__stars');
+    starsBlock === null || starsBlock === void 0 ? void 0 : starsBlock.setAttribute('aria-invalid', 'false');
+    starsBlock === null || starsBlock === void 0 ? void 0 : starsBlock.querySelectorAll('svg').forEach(function (star) {
+      star.classList.remove('is-active');
+      star.setAttribute('aria-checked', 'false');
+    });
+
+    if (reviewPhotosInput) {
+      var _photosHint = reviewPhotosInput.parentElement.querySelector('span');
+
+      _photosHint.textContent = "\u043C\u043E\u0436\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0434\u043E ".concat(reviewPhotosInput.dataset.maxFiles, " \u0444\u043E\u0442\u043E");
+    }
+
+    reviewsFormStep2.hidden = true;
+    reviewsFormBlock.hidden = false;
+    scrollToReviewBlock(reviewsFormBlock);
+  });
+  continueShoppingButton === null || continueShoppingButton === void 0 ? void 0 : continueShoppingButton.addEventListener('click', function () {
+    reviewsFormStep2.hidden = true;
+
+    if (successReview) {
+      successReview.hidden = false;
+      scrollToReviewBlock(successReview);
+    }
+  });
+}
+
+var reviewsCardsSlider = document.querySelector('.reviews-form__cards-slider');
+
+if (reviewsCardsSlider) {
+  new Swiper(reviewsCardsSlider, {
+    speed: 600,
+    spaceBetween: 0,
+    slidesPerView: 1.35,
+    grabCursor: true,
+    watchOverflow: true,
+    mousewheel: {
+      forceToAxis: false,
+      releaseOnEdges: true,
+      sensitivity: 1
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 2
+      },
+      480: {
+        slidesPerView: 3
+      },
+      651: {
+        slidesPerView: 3,
+        spaceBetween: 0
+      }
+    }
   });
 }
 /******/ })()
